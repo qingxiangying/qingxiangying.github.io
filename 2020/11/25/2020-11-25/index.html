@@ -4,6 +4,13 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="1.构造函数定义：
+构造函数与普通函数有相同的创建方式
+习惯上首字母大写
+调用构造函数时用new关键字    
+
+1234567891011121314151617181920212223242526272829303132function Person()&amp;#123;&amp;#125;var per =" />
+  
 
   
   
@@ -11,13 +18,17 @@
   
   
   
-  <title>Hexo</title>
+  <title>关于原型的分享 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="1.构造函数定义： 构造函数与普通函数有相同的创建方式 习惯上首字母大写 调用构造函数时用new关键字      1234567891011121314151617181920212223242526272829303132function Person()&amp;#123;&amp;#125;var per &#x3D; new Person;console.log(per);&#x2F;&#x2F;输出一个空对象&#96;&#96;&#96;   即可见，构造">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于原型的分享">
+<meta property="og:url" content="http://example.com/2020/11/25/2020-11-25/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.构造函数定义： 构造函数与普通函数有相同的创建方式 习惯上首字母大写 调用构造函数时用new关键字      1234567891011121314151617181920212223242526272829303132function Person()&amp;#123;&amp;#125;var per &#x3D; new Person;console.log(per);&#x2F;&#x2F;输出一个空对象&#96;&#96;&#96;   即可见，构造">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-11-25T15:05:33.170Z">
+<meta property="article:modified_time" content="2020-11-25T15:03:24.000Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -62,17 +73,15 @@
 </header>
 
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-2020-11-25" class="post-2020-11-25 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-2020-11-25" class="post-2020-11-25 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/11/25/2020-11-25/">关于原型的分享</a>
+    <h1 class="entry-title article-title">
+      关于原型的分享
     </h1>
   
 
@@ -131,228 +140,20 @@
 </article>
 
 
-
-
-
-
-  
-    <article id="post-2020-11-21" class="post-2020-11-21 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/11/21/2020-11-21/">关于机试题的基础分享</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2020/11/21/2020-11-21/" data-id="ckhre900z0001o636gyrhgpv6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h1 id="1-坏键盘"><a href="#1-坏键盘" class="headerlink" title="1.坏键盘"></a>1.坏键盘</h1><h3 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h3><pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;ctype.h&gt;
-int put_stringr(const char s[])&#123;
-    int i=0;
-    int cnt=0;
-    while(s[i])&#123;
-        cnt++;
-        i++;
-    &#125;
-    return cnt;
-&#125;
-int main(void)
-&#123;
-    int i,j,k;
-    j=k=0;
-    char str_1[128];/*应该输入的字符串*/
-    char str_2[128];/*实际输入的字符串*/
-    printf(&quot;请输入应该输入的字符串:&quot;);scanf(&quot;%s&quot;,str_1);
-    printf(&quot;请输入实际输入的字符串:&quot;);scanf(&quot;%s&quot;,str_2);
-    printf(&quot;坏掉的键是：&quot;);
-    for(i=0;i&lt;put_stringr(str_1);i++)&#123;
-        if(str_1[i]!=str_2[j])&#123;
-            //printf(&quot;%c&quot;,str_1[i]);
-            printf(&quot;%c&quot;,toupper(str_1[i]));
-            j--;
-        &#125;
-        j++;
-    &#125;
-    printf(&quot;\n&quot;);
-    return 0;
-&#125;</code></pre>
-<h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><ol>
-<li>我们要输入两个字符串，由于没有指定大小，所以我设定他的大小为128</li>
-<li>然后重点是如何比较两个字符串。我先编写了put_stringer函数用以确定输入的字符串的长度，然后在主函数里面进行了比较</li>
-<li>我设置了i，j两个循环变量，对两个字符串对应的位置进行比较，如果两个字符相等，同时j++，i++。如果对应位置不同，这说明原应该输入的字符按键是坏掉的，用toupper函数使其大写后输出该字符，同时i++但不对j进行操作</li>
-<li>但为了简化，我使每一个循环中都有j++，而判断出不等时多出一个j–</li>
-</ol>
-<h1 id="2-车厢重组"><a href="#2-车厢重组" class="headerlink" title="2.车厢重组"></a>2.车厢重组</h1><h3 id="代码部分-1"><a href="#代码部分-1" class="headerlink" title="代码部分"></a>代码部分</h3><pre><code class="c">#include &lt;stdio.h&gt;
-#define swap(int,a,b) int c; c=a; a=b; b=c;
-int bsort(int a[],int n)&#123;
-    int i,j;
-    int cnt=0;
-    for(i=0;i&lt;n;i++)&#123;
-        for(j=1;j&lt;=n-i;j++)&#123;
-            if(a[j]&lt;a[j-1])&#123;
-                int temp=a[j-1];
-                a[j-1]=a[j];
-                a[j]=temp;
-                cnt++;
-            &#125;
-        &#125;
-    &#125;
-    return cnt;
-&#125;
-int main(void)
-&#123;
-    int n,i,j;
-    int a[n];
-    printf(&quot;有多少节车厢：&quot;);scanf(&quot;%d&quot;,&amp;n);
-    printf(&quot;他们的顺序：&quot;);
-    for(i=0;i&lt;n;i++)&#123;
-        scanf(&quot;%d&quot;,&amp;a[i]);
-    &#125;
-    printf(&quot;至少旋转%d次 \n&quot;,bsort(a,n)-n);
-    return 0;
-&#125;</code></pre>
-<h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><ol>
-<li>对题目分析，他其实就是一个简单的冒泡排序，每交换一次数值，则使计数的值+1，最后返回计数值就好</li>
-<li>当然，我这里的冒泡排序，由于我使排序的循环多运行了n次所以在输出的时候是输出的返回值减n</li>
-</ol>
-<h1 id="3-矩阵逆置"><a href="#3-矩阵逆置" class="headerlink" title="3.矩阵逆置"></a>3.矩阵逆置</h1><h3 id="代码部分-2"><a href="#代码部分-2" class="headerlink" title="代码部分"></a>代码部分</h3><pre><code class="c">#include &lt;stdio.h&gt;
-int main(void)
-&#123;
-    int i,j;
-    int v[3][3];
-    printf(&quot;请输入这个矩阵\n&quot;);
-    for(i=0;i&lt;3;i++)&#123;
-        printf(&quot;第%d行:&quot;,i+1);
-        for(j=0;j&lt;3;j++)&#123;
-            scanf(&quot;%d&quot;,&amp;v[i][j]);
-        &#125;
-
-    &#125;
-    printf(&quot;这个矩阵的转置矩阵是\n&quot;);
-    for(j=0;j&lt;3;j++)&#123;
-        for(i=0;i&lt;3;i++)&#123;
-            printf(&quot;%3d &quot;,v[i][j]);
-        &#125;
-        printf(&quot;\n&quot;);
-    &#125;
-    return 0;
-&#125;  </code></pre>
-<h3 id="解释-2"><a href="#解释-2" class="headerlink" title="解释"></a>解释</h3><ol>
-<li>首先创建一个二维数组v[3][3]</li>
-<li>对这个数组用循环赋值</li>
-<li>用循环对数组的逆置进行输出</li>
-<li>由i和j去指定v[i][j]去输入，而输出v[j][i]就实现了矩阵的逆置输出</li>
-</ol>
-<h1 id="4-汉诺塔"><a href="#4-汉诺塔" class="headerlink" title="4.汉诺塔"></a>4.汉诺塔</h1><h3 id="代码部分-3"><a href="#代码部分-3" class="headerlink" title="代码部分"></a>代码部分</h3><pre><code class="c">#include &lt;stdio.h&gt;
-int n_2(int n)&#123;
-    int l=1;
-    for(int i=0;i&lt;n;i++)&#123;
-        l=l*2;
-    &#125;
-    return l;
-&#125;
-/*用以求2的n次方，因为deepin系统无法用math.h库函数..*/
-int main(void)
-&#123;
-    int n;
-    printf(&quot;有多少个块：&quot;);scanf(&quot;%d&quot;,&amp;n);
-    printf(&quot;一共需要%d步&quot;,n_2(n)-1);
-    //由数学论证，n个块在三个柱子下需要移动2的n次方-1下
-    //具体论证由数学归纳法可证.....
-    return 0;
-&#125;</code></pre>
-<h3 id="解释-3"><a href="#解释-3" class="headerlink" title="解释"></a>解释</h3><ol>
-<li>因为这个题在数学里很常见，也有用数学求的方法，我就没有用递归</li>
-</ol>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/11/21/2020-11-21/">
-    <time datetime="2020-11-21T07:16:16.785Z" class="entry-date">
-        2020-11-21
-    </time>
-</a>
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
     
     
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2020/10/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://example.com/2020/10/14/hello-world/" data-id="ckhre900t0000o6365mr77cqy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2020/10/14/hello-world/">
-    <time datetime="2020-10-14T11:13:46.122Z" class="entry-date">
-        2020-10-14
-    </time>
-</a>
+        <span class="nav-next"><a href="/2020/11/21/2020-11-21/" rel="next">关于机试题的基础分享 <span class="meta-nav">→</span></a></span>
     
-    
-    </footer>
-</article>
+</nav><!-- .nav-single -->
 
 
 
 
 
 
-  
-  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
